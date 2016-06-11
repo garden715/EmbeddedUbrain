@@ -1,0 +1,17 @@
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c
+stm324x9i_eval\cmsis_os.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\string.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.h
+stm324x9i_eval\cmsis_os.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stdint.h
+stm324x9i_eval\cmsis_os.o: C:\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOS.h
+stm324x9i_eval\cmsis_os.o: C:\Keil_v5\ARM\ARMCC\Bin\..\include\stddef.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\include\projdefs.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\include\FreeRTOSConfig.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\include\portable.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\portmacro.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\include\mpu_wrappers.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\include\task.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\include\list.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\include\timers.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\include\queue.h
+stm324x9i_eval\cmsis_os.o: ..\..\..\Middlewares\Third_Party\FreeRTOS\Source\include\semphr.h
