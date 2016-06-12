@@ -5,10 +5,10 @@
 <h2>Tool Versions:</h2>
 IDE-Version: μVision V5.20.0.0
 Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
-License Information: a a a Flex license: MDK-ARM Standard Cortex-M only: 27 user(s) (mdk_cm_std) Support: Jan 2016
+License Information: a a, a, LIC=----
  
 Tool Versions:
-Toolchain:       MDK-ARM Standard Cortex-M only: 27 user(s)  Version: 5.20
+Toolchain:       MDK-Lite  Version: 5.20
 Toolchain Path:  C:\Keil_v5\ARM\ARMCC\Bin
 C Compiler:      Armcc.exe V5.06 update 2 (build 183)
 Assembler:       Armasm.exe V5.06 update 2 (build 183)
@@ -21,8 +21,8 @@ Target DLL:      UL2CM3.DLL V1.157.18.0
 Dialog DLL:      TCM.DLL V1.14.9.0
  
 <h2>Project:</h2>
-\\Mac\Home\Desktop\Term\Lab9\FreeRTOS_ThreadCreation\MDK-ARM\Project.uvprojx
-Project File Date:  05/24/2016
+\\Mac\Dropbox\4학년1학기\임베디드소프트웨어\Term\Lab9\FreeRTOS_ThreadCreation\MDK-ARM\Project.uvprojx
+Project File Date:  06/08/2016
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 2 (build 183)', folder: 'C:\Keil_v5\ARM\ARMCC\Bin'
@@ -32,7 +32,7 @@ compiling stm32f4xx_it.c...
 compiling main-lab7.c...
 main-lab7.c(158): warning:  #177-D: variable "rotate" was declared but never referenced
         int rotate=0;
-main-lab7.c(159): warning:  #550-D: variable "flag" was set but never used
+main-lab7.c(159): warning:  #177-D: variable "flag" was declared but never referenced
         int flag=2;
 main-lab7.c(160): warning:  #177-D: variable "a" was declared but never referenced
     int a = 0, b = 1;
@@ -41,21 +41,21 @@ main-lab7.c(160): warning:  #177-D: variable "b" was declared but never referenc
 main-lab7.c(161): warning:  #177-D: variable "i" was declared but never referenced
     int i;
 main-lab7.c(163): warning:  #177-D: variable "xDelay" was declared but never referenced
-         const portTickType xDelay = 1000; //xDelay 1?袈? 설정 
-main-lab7.c(433): warning:  #144-D: a value of type "void (*)(void *)" cannot be used to initialize an entity of type "os_pthread"
+         const portTickType xDelay = 1000; //xDelay 1??? ???? 
+main-lab7.c(462): warning:  #144-D: a value of type "void (*)(void *)" cannot be used to initialize an entity of type "os_pthread"
         
 sThreadDef(myTask, myTask, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
-main-lab7.c(436): warning:  #144-D: a value of type "void (*)(void)" cannot be used to initialize an entity of type "os_pthread"
+main-lab7.c(465): warning:  #144-D: a value of type "void (*)(void)" cannot be used to initialize an entity of type "os_pthread"
         
 sThreadDef(myTask2, myTask2, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
-main-lab7.c(439): warning:  #144-D: a value of type "void (*)(void)" cannot be used to initialize an entity of type "os_pthread"
+main-lab7.c(468): warning:  #144-D: a value of type "void (*)(void)" cannot be used to initialize an entity of type "os_pthread"
         
 sThreadDef(myTask3, myTask3, osPriorityNormal, 0, configMINIMAL_STACK_SIZE);
-main-lab7.c(332): warning:  #177-D: variable "ch" was declared but never referenced
+main-lab7.c(361): warning:  #177-D: variable "ch" was declared but never referenced
         uint8_t ch;
-main-lab7.c(333): warning:  #177-D: variable "Encoder1" was declared but never referenced
+main-lab7.c(362): warning:  #177-D: variable "Encoder1" was declared but never referenced
         uint16_t Encoder1 = 0;
-main-lab7.c(334): warning:  #177-D: variable "Encoder2" was declared but never referenced
+main-lab7.c(363): warning:  #177-D: variable "Encoder2" was declared but never referenced
         uint16_t Encoder2 = 0;
 main-lab7.c: 12 warnings, 0 errors
 compiling stm32f4xx_hal_msp.c...
@@ -94,15 +94,15 @@ compiling cmsis_os.c...
 compiling port.c...
 compiling heap_4.c...
 linking...
-Program Size: Code=17660 RO-data=584 RW-data=264 ZI-data=27832  
+Program Size: Code=17760 RO-data=584 RW-data=268 ZI-data=27836  
 "STM324x9I_EVAL\STM324x9I_EVAL.axf" - 0 Error(s), 12 Warning(s).
 
 <h2>Collection of Component include folders:</h2>
-  \\Mac\Home\Desktop\Term\Lab9\FreeRTOS_ThreadCreation\MDK-ARM\RTE
+  \\Mac\Dropbox\4학년1학기\임베디드소프트웨어\Term\Lab9\FreeRTOS_ThreadCreation\MDK-ARM\RTE
   C:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:37
+Build Time Elapsed:  00:00:38
 </pre>
 </body>
 </html>

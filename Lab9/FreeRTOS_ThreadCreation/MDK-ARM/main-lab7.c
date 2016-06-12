@@ -165,64 +165,67 @@ void myTask(void *params) {
 	Motor_Forward();
 	  for (;;) {
 
-			if (distance2 < 20 || uhADCxLeft > 600 || uhADCxRight > 600 ) {
+			if (distance2 < 25 || uhADCxLeft > 1000 || uhADCxRight > 1000 ) {
 				
-				Motor_Stop(); //????		
+				Motor_Stop(); 
 				
-				
-				if ((uhADCxLeft > uhADCxRight) || ( distance1 > distance3 )) {
+				if (( distance1 > distance3 )) {
 					motorInterrupt2 = 0;
 					Motor_Right();			
 					direction++;					
-					while(motorInterrupt2 < 300) {
+					while(motorInterrupt2 < 30) {
 						
-						printf("\r\n%d",motorInterrupt2);
-						vTaskDelay(2/portTICK_RATE_MS);
-					}				
+						//printf("\r\n%d",motorInterrupt2);
+						vTaskDelay(1/portTICK_RATE_MS);
+					}
+					printf("\r\n%d\t%d",motorInterrupt2,direction);					
 				} 
 				
-				Motor_Stop();
+				//tMotor_Stop();
 				
-				
-				 if ((uhADCxLeft < uhADCxRight) || ( distance1 < distance3 )){
-					 motorInterrupt1 = 0;
+				 if (( distance1 < distance3 )){
+					 motorInterrupt1 = 1;
 					Motor_Left();
 					direction--;
-					while(motorInterrupt1 < 300) {
+					while(motorInterrupt1 < 30) {
 						
-						printf("\r\n%d",motorInterrupt1);
-						vTaskDelay(2/portTICK_RATE_MS);
+						//printf("\r\n%d",motorInterrupt1);
+						vTaskDelay(1/portTICK_RATE_MS);
 					}
+					printf("\r\n%d\t%d",motorInterrupt1,direction);
 				}
 			} 
 			// ?????????? ?? ????
-			else if ( 	( direction > 0 ) && ( distance3 > 50 ) ) {
+			else if ( 	( direction > 2 ) && ( distance3 > 50 ) ) {
 					Motor_Stop();
 				  Motor_Left();
 					direction--;
-					motorInterrupt1 = 0;
-					while(motorInterrupt1 < 300) {
+					motorInterrupt1 = 1;
+					while(motorInterrupt1 < 30) {
 						
-						printf("\r\n%d",motorInterrupt1);
-						vTaskDelay(2/portTICK_RATE_MS);
+						//printf("\r\n%d",motorInterrupt1);
+						vTaskDelay(1/portTICK_RATE_MS);
 					}
+					printf("\r\n%d\t%d",motorInterrupt1,direction);
 			}  
 			// ???????? ?? ????
-			else if ( 	( direction < 0 ) && ( distance1 > 50 ) ) {
+			else if ( 	( direction < -2 ) && ( distance1 > 50 ) ) {
 				// ?????????? ????
 				Motor_Stop();
 				Motor_Right();
 				direction++;
-				motorInterrupt2 = 0;
-				while(motorInterrupt2 < 300) {
+				motorInterrupt2 = 1;
+				while(motorInterrupt2 < 30) {
 						
-						printf("\r\n%d",motorInterrupt2);
-						vTaskDelay(2/portTICK_RATE_MS);
-					}				
+						//printf("\r\n%d",motorInterrupt2);
+						vTaskDelay(1/portTICK_RATE_MS);
+					}
+				printf("\r\n%d\t%d",motorInterrupt2,direction);
 			}
 			vTaskDelay(3/portTICK_RATE_MS);
 					Motor_Stop();
 					Motor_Forward();
+			//printf("\r\n%d", direction);
 		}
 }
 

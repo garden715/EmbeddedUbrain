@@ -905,17 +905,18 @@ ARM Macro Assembler    Page 14
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M4.fp --apcs=int
 erwork --depend=stm324x9i_eval\startup_stm32f429xx.d -ostm324x9i_eval\startup_s
-tm32f429xx.o -I..\Inc -I\\Mac\Home\Desktop\Term\Lab9\FreeRTOS_ThreadCreation\MD
-K-ARM\RTE -IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9.0\Drivers\CMSIS\Device\S
-T\STM32F4xx\Include -IC:\Keil_v5\ARM\CMSIS\Include --predefine="__MICROLIB SETA
+tm32f429xx.o -I..\Inc -I\\Mac\Dropbox\4학년1학기\임베디드소프트웨어\Term\Lab9\F
+reeRTOS_ThreadCreation\MDK-ARM\RTE -IC:\Keil_v5\ARM\PACK\Keil\STM32F4xx_DFP\2.9
+.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include -IC:\Keil_v5\ARM\CMSIS\Include --p
 
 
 
 ARM Macro Assembler    Page 15 
 
 
- 1" --predefine="__UVISION_VERSION SETA 520" --predefine="STM32F429xx SETA 1" -
--list=startup_stm32f429xx.lst startup_stm32f429xx.s
+redefine="__EVAL SETA 1" --predefine="__MICROLIB SETA 1" --predefine="__UVISION
+_VERSION SETA 520" --predefine="STM32F429xx SETA 1" --list=startup_stm32f429xx.
+lst startup_stm32f429xx.s
 
 
 
@@ -2087,4 +2088,4 @@ Symbol: __main
       At line 200 in file startup_stm32f429xx.s
 Comment: __main used once
 2 symbols
-453 symbols in table
+454 symbols in table
