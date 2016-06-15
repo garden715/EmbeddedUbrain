@@ -178,91 +178,91 @@ static void Error_Handler(void);
  * 3. 장애물을 피해 오른쪽으로 돈 경우
  */
 void myTask(void *params) {
-								int i;
-								osDelay(20); //20ms Delay
-								Motor_Forward(); // 매번 앞으로 전진 시킴
-								for (;; ) { // 무한 loop을 이용해 매번 상황을 인지함
-																/*
-																 * 전방 25cm 이내와 좌전방 우전방 적외선 센서값이 10000이상일 경우
-																 * 장애물이 있다고 판단한다.
-																 */
-																if (distance2 < 25 || uhADCxLeft > 1000 || uhADCxRight > 1000 ) {
-																								// 주행을 멈추고
-																								Motor_Stop();
+		int i;
+		osDelay(20); //20ms Delay
+		Motor_Forward(); // 매번 앞으로 전진 시킴
+		for (;; ) { // 무한 loop을 이용해 매번 상황을 인지함
+										/*
+										 * 전방 25cm 이내와 좌전방 우전방 적외선 센서값이 10000이상일 경우
+										 * 장애물이 있다고 판단한다.
+										 */
+										if (distance2 < 25 || uhADCxLeft > 1000 || uhADCxRight > 1000 ) {
+																		// 주행을 멈추고
+																		Motor_Stop();
 
-																								/* 좌 우 초음파 센서의 값을 비교해 더 먼 쪽으로 회전한다.
-																								 * 1. 오른쪽 센서값이 더 클경우
-																								 * 오른쪽으로 회전
-																								 */
-																								if (( distance1 > distance3 )) {
-																																motorInterrupt2 = 1; // 바퀴 회전수를 계산하기 위해 초기화
-																																Motor_Right();
+																		/* 좌 우 초음파 센서의 값을 비교해 더 먼 쪽으로 회전한다.
+																		 * 1. 오른쪽 센서값이 더 클경우
+																		 * 오른쪽으로 회전
+																		 */
+																		if (( distance1 > distance3 )) {
+																										motorInterrupt2 = 1; // 바퀴 회전수를 계산하기 위해 초기화
+																										Motor_Right();
 
-																																direction++; // 오른쪽 회전의 경우 방향 설정 값을 증가시킨다
+																										direction++; // 오른쪽 회전의 경우 방향 설정 값을 증가시킨다
 
-																																while(motorInterrupt2 < 30) { // 1회 회전시 바퀴 회전수 30만큼 회전한다.
-																																								vTaskDelay(1/portTICK_RATE_MS); // motorInterrupt2 값을 읽어오기 위한 딜레이
-																																}
-																								}
+																										while(motorInterrupt2 < 30) { // 1회 회전시 바퀴 회전수 30만큼 회전한다.
+																																		vTaskDelay(1/portTICK_RATE_MS); // motorInterrupt2 값을 읽어오기 위한 딜레이
+																										}
+																		}
 
-																								/* 좌 우 초음파 센서의 값을 비교해 더 먼 쪽으로 회전한다.
-																								 * 2. 왼쪽 센서값이 더 클경우
-																								 * 왼쪽으로 회전
-																								 */
-																								if (( distance1 < distance3 )) {
-																																motorInterrupt1 = 1;// 바퀴 회전수를 계산하기 위해 초기화
-																																Motor_Left();
+																		/* 좌 우 초음파 센서의 값을 비교해 더 먼 쪽으로 회전한다.
+																		 * 2. 왼쪽 센서값이 더 클경우
+																		 * 왼쪽으로 회전
+																		 */
+																		if (( distance1 < distance3 )) {
+																										motorInterrupt1 = 1;// 바퀴 회전수를 계산하기 위해 초기화
+																										Motor_Left();
 
-																																direction--; // 왼쪽 회전의 경우 방향 설정 값을 감소시킨다
+																										direction--; // 왼쪽 회전의 경우 방향 설정 값을 감소시킨다
 
-																																while(motorInterrupt1 < 30) { // 1회 회전시 바퀴 회전수 30만큼 회전한다.
-																																								vTaskDelay(1/portTICK_RATE_MS); // motorInterrupt2 값을 읽어오기 위한 딜레이
-																																}
-																								}
-																}
-																/*
-																 * 방향이 양수일 경우 오른쪽으로 회전했다고 판단
-																 * 즉, ubrain이 최종 진행 방향 대비 오른쪽으로 치우쳐져 있다.
-																 * 따라서 장애물이 ubrain의 왼쪽에 있으므로 왼쪽 센서값을 읽어
-																 * 50cm가 넘을 경우 장애물을 통과했다고 판단
-																 */
-																else if (  ( direction > 2 ) && ( distance3 > 50 ) ) {
-																								Motor_Stop();
+																										while(motorInterrupt1 < 30) { // 1회 회전시 바퀴 회전수 30만큼 회전한다.
+																																		vTaskDelay(1/portTICK_RATE_MS); // motorInterrupt2 값을 읽어오기 위한 딜레이
+																										}
+																		}
+										}
+										/*
+										 * 방향이 양수일 경우 오른쪽으로 회전했다고 판단
+										 * 즉, ubrain이 최종 진행 방향 대비 오른쪽으로 치우쳐져 있다.
+										 * 따라서 장애물이 ubrain의 왼쪽에 있으므로 왼쪽 센서값을 읽어
+										 * 50cm가 넘을 경우 장애물을 통과했다고 판단
+										 */
+										else if (  ( direction > 2 ) && ( distance3 > 50 ) ) {
+																		Motor_Stop();
 
-																								Motor_Left(); // 왼쪽에 공간이 생겼으므로 왼쪽으로 회전
+																		Motor_Left(); // 왼쪽에 공간이 생겼으므로 왼쪽으로 회전
 
-																								direction--; // 왼쪽으로 회전했으니 방향 설정 값을 감소시킨다.
+																		direction--; // 왼쪽으로 회전했으니 방향 설정 값을 감소시킨다.
 
-																								motorInterrupt1 = 1; // 바퀴 회전수를 계산하기 위해 초기화
+																		motorInterrupt1 = 1; // 바퀴 회전수를 계산하기 위해 초기화
 
-																								while(motorInterrupt1 < 30) { // 1회 회전시 바퀴 회전수 30만큼 회전한다.
-																																vTaskDelay(1/portTICK_RATE_MS); // motorInterrupt1 값을 읽어오기 위한 딜레이
-																								}
-																}
+																		while(motorInterrupt1 < 30) { // 1회 회전시 바퀴 회전수 30만큼 회전한다.
+																										vTaskDelay(1/portTICK_RATE_MS); // motorInterrupt1 값을 읽어오기 위한 딜레이
+																		}
+										}
 
-																/*
-																 * 방향이 음일 경우 왼쪽으로 회전했다고 판단
-																 * 즉, ubrain이 최종 진행 방향 대비 왼쪽으로 치우쳐져 있다.
-																 * 따라서 장애물이 ubrain의 오른쪽에 있으므로 오른쪽 센서값을 읽어
-																 * 50cm가 넘을 경우 장애물을 통과했다고 판단
-																 */
-																else if (  ( direction < -2 ) && ( distance1 > 50 ) ) {
-																								Motor_Stop();
+										/*
+										 * 방향이 음일 경우 왼쪽으로 회전했다고 판단
+										 * 즉, ubrain이 최종 진행 방향 대비 왼쪽으로 치우쳐져 있다.
+										 * 따라서 장애물이 ubrain의 오른쪽에 있으므로 오른쪽 센서값을 읽어
+										 * 50cm가 넘을 경우 장애물을 통과했다고 판단
+										 */
+										else if (  ( direction < -2 ) && ( distance1 > 50 ) ) {
+																		Motor_Stop();
 
-																								Motor_Right(); // 왼쪽에 공간이 생겼으므로 왼쪽으로 회전
+																		Motor_Right(); // 왼쪽에 공간이 생겼으므로 왼쪽으로 회전
 
-																								direction++; // 왼쪽으로 회전했으니 방향 설정 값을 감소시킨다.
+																		direction++; // 왼쪽으로 회전했으니 방향 설정 값을 감소시킨다.
 
-																								motorInterrupt2 = 1; // 바퀴 회전수를 계산하기 위해 초기화
+																		motorInterrupt2 = 1; // 바퀴 회전수를 계산하기 위해 초기화
 
-																								while(motorInterrupt2 < 30) { // 1회 회전시 바퀴 회전수 30만큼 회전한다.
-																																vTaskDelay(1/portTICK_RATE_MS); // motorInterrupt2 값을 읽어오기 위한 딜레이
-																								}
-																}
-																vTaskDelay(3/portTICK_RATE_MS); // ubrain이 진행하는 동안 센서값을 각각 읽어와야 하므로 딜레이를 준다.
-																Motor_Stop();
-																Motor_Forward(); // 다시 전진 시킨다.
-								}
+																		while(motorInterrupt2 < 30) { // 1회 회전시 바퀴 회전수 30만큼 회전한다.
+																										vTaskDelay(1/portTICK_RATE_MS); // motorInterrupt2 값을 읽어오기 위한 딜레이
+																		}
+										}
+										vTaskDelay(3/portTICK_RATE_MS); // ubrain이 진행하는 동안 센서값을 각각 읽어와야 하므로 딜레이를 준다.
+										Motor_Stop();
+										Motor_Forward(); // 다시 전진 시킨다.
+		}
 }
 
 /*
