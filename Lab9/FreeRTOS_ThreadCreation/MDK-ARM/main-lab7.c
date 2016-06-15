@@ -455,6 +455,9 @@ int main(void)
 	Motor_Init();
 	EXTILine_Config(); // Encoder Interrupt Setting
 	
+	//Motor_Left();
+ 
+	
 	Motor_Forward();
 
 	
